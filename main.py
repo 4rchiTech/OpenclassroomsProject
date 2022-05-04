@@ -13,6 +13,7 @@ import unidecode
 
 NB_PDTS_PAR_PAGE = 20
 
+CHEMIN_MODULE_DATA = r"C:\\Users\crypt\Desktop\openclassroom\module_2\data"
 CHEMIN_LOG = "C:\\Users\crypt\Desktop\openclassroom\module_2\journal_logging.log"
 NAME_LOG = "journal_logging.log"
 
@@ -47,7 +48,7 @@ logger.addHandler(stream_handler)
 
 def ecriture_csv(categorie=None, input=None):
     nom_fichier_csv = f"\{categorie}.csv"
-    path_type = r"C:\\Users\crypt\Desktop\openclassroom\module_2\data" + nom_fichier_csv
+    path_type = CHEMIN_MODULE_DATA + nom_fichier_csv
     path_clean = path_type.replace(" ", "_")
     with open(path_clean, "a", newline="") as fichier:
         ecriture = csv.writer(fichier, delimiter=",")
@@ -197,9 +198,7 @@ def createur_arborescence_csv():
         for categorie in liste_nom_category:
             nom_fichier_csv = f"\{categorie}.csv"
 
-            path_type = (
-                r"C:\\Users\crypt\Desktop\openclassroom\module_2\data" + nom_fichier_csv
-            )
+            path_type = CHEMIN_MODULE_DATA + nom_fichier_csv
             path_clean = path_type.replace(" ", "_")
             with open(path_clean, "w") as fichier:
                 csv.writer(fichier, delimiter=",")
